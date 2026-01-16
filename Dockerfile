@@ -21,8 +21,8 @@ FROM nginx:alpine
 # Copy built files from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy nginx configuration (optional)
-# COPY nginx.conf /etc/nginx/nginx.conf
+# Copy extscript.js to root level for serving
+COPY --from=builder /app/dist/src/extscript.js /usr/share/nginx/html/extscript.js
 
 # Expose port 80
 EXPOSE 80
